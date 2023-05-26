@@ -24,9 +24,13 @@ public class AttachedSceneController : MonoBehaviour
     {
         SceneChangeScript.LoadScene(Define.SCENENAME_MASTERGAME);
     }
-    public void ChangeResultScene()
+    public void ChangeClearResultScene()
     {
-        SceneChangeScript.LoadScene(Define.SCENENAME_RESULT);
+        SceneChangeScript.LoadScene(Define.SCENENAME_CLEAR_RESULT);
+    }
+    public void ChangeGameOverResultScene()
+    {
+        SceneChangeScript.LoadScene(Define.SCENENAME_GAMEOVER_RESULT);
     }
 
     public void Finish()
