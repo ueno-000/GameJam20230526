@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Arai/TitleScene.unity
+    guid: 5d9264a74f2b7bd43b8d507826d20fd2
+  - enabled: 1
+    path: Assets/Tanaka/GameScene.unity
+    guid: bea0ad844277e134c8cf7e5036448ca7
+  - enabled: 1
+    path: Assets/Arai/GameOverResultScene.unity
+    guid: b5ef5506cbd9d554c993f8c2d936015d
+  - enabled: 1
+    path: Assets/Arai/GameClearResultScene.unity
+    guid: 07b8497da7fcefb479bb67639e00acae
   m_configObjects: {}

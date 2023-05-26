@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    [SerializeField] private float _damagePower;
     [SerializeField] private float _destroyTime = 5f;
     [SerializeField] private float _speed = 5f;
     private Rigidbody2D _rb;
@@ -17,6 +18,12 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var damagetarget = collision.gameObject.GetComponent<IDamage>();
+        //IDamagable ‚Í AddDamage ‚Ìˆ—‚ª•K{
+        if (damagetarget != null)
+        {
+            collision.gameObject.GetComponent<IDamage>().Damage(_damagePower);
+        }
         Destroy(this.gameObject);
     }
 

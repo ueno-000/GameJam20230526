@@ -25,12 +25,12 @@ public class bullet_1 : MonoBehaviour
     {
         _rb.AddForce (new Vector3 (0, -1 * Bulletspeed1_, 0));
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == Player)
+        if (collision.gameObject.name == "Player")
         {
-            IDamage damage1 = collision.gameObject.GetComponent<IDamage>();
-            damage1.Damage(_damage1);
+            IDamage damage3 = collision.gameObject.GetComponent<IDamage>();
+            damage3.Damage(_damage1);
         }
     }
 }

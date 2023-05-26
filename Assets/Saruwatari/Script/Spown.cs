@@ -6,6 +6,7 @@ public class Spown : MonoBehaviour
 {
     public float a;
     public float b;
+    bool isA;
 
     [SerializeField] GameObject Boss;
     [SerializeField] GameObject Kara;
@@ -19,8 +20,9 @@ public class Spown : MonoBehaviour
     void Update()
     {
         a += Time.deltaTime;
-        if ( a > b)
+        if ( a > b && !isA)
         {
+            isA= true;
             Instantiate(Boss,Kara.transform.position,Kara.transform.rotation);
         }
     }

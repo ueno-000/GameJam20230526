@@ -27,7 +27,7 @@ public class EnemyBoss : MonoBehaviour,IDamage
 
     [SerializeField] GameObject _bullet;
 
-    [SerializeField] Slider HPbar;
+    //[SerializeField] Slider HPbar;
 
     void Start()
     {
@@ -40,24 +40,28 @@ public class EnemyBoss : MonoBehaviour,IDamage
     // Update is called once per frame
     void Update()
     {
-        if (_move == 1)
-        {
-            transform.position -= new Vector3(Time.deltaTime * _speed, 0);
-            b = true;
-        }
-        else if (_move == 0) 
-        {
-            transform.position += new Vector3(Time.deltaTime * _speed, 0);
-            b = true;
-        }
-        else
-        {
-                   Attack();
-            Debug.Log(_move);
-        }
+        //if (_move == 1)
+        //{
+        //    transform.position -= new Vector3(Time.deltaTime * _speed, 0);
+        //    b = true;
+        //}
+        //else if (_move == 0) 
+        //{
+        //    transform.position += new Vector3(Time.deltaTime * _speed, 0);
+        //    b = true;
+        //}
+        //else
+        //{
+        //           Attack();
+        //    Debug.Log(_move);
+        //}
+
         if(HP <= 0)
         {
+
+            GameManager.GetClear = true;
             Destroy(this.gameObject);
+
         }
     }
 
@@ -86,7 +90,8 @@ public class EnemyBoss : MonoBehaviour,IDamage
 
     void IDamage.Damage(float damage)
     {
+        Debug.Log("aaaaa");
         HP -= damage;
-        HPbar.value = HP / MaxHP;
+        //HPbar.value = HP / MaxHP;
     }
 }
