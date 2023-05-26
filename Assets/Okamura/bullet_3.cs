@@ -10,8 +10,8 @@ public class bullet_3 : MonoBehaviour
     public int Bulletspeed1_;
     float ChasedTime;
     [SerializeField] int ChasedTimeLimid;
-    [SerializeField] float Decreased;
     [SerializeField] int ResetTime;
+    public float _damage3;
     // Start is called  the first frame update
     void Start()
     {
@@ -25,20 +25,22 @@ public class bullet_3 : MonoBehaviour
     void Update()
     {
         ChasedTime += Time.deltaTime;
-        if(ChasedTime <= ChasedTimeLimid)
+        if (ChasedTime <= ChasedTimeLimid)
         {
             Vector3 vector3 = Player.transform.position - _tr.position;
             _rb.AddForce(vector3.normalized * Bulletspeed1_);
         }
-        else if(ChasedTime > ResetTime)
+        else if (ChasedTime > ResetTime)
         {
             ChasedTime = 0;
         }
-        else
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject == Player) 
         {
-            Vector3 vector3_1 = Player.transform.position - _tr.position;
-            _rb.velocity = vector3_1 *  Decreased;
+            IDamage damage3 = collision.gameObject.GetComponent<IDamage>();
+            damage3.Damage(_damage3);
         }
-
     }
 }
