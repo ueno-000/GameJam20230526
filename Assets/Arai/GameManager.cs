@@ -11,27 +11,18 @@ public class GameManager : MonoBehaviour
     /// <summary> Scoreを表示するテキスト</summary>
     [Header("Scoreを表示するテキスト")]
     [SerializeField] Text _textPanel;
-    [Header("Playerが獲得したscore")]
-    [SerializeField] private int _score = 0;
-    public int GetScore
-    { 
-        get { return _score; }
-        set { _score = value; }
-    }
-    [Header("Playerのクリア判定")]
-    [SerializeField] private bool _isClear = false;
-    public bool GetClear
-    {
-        get { return _isClear; }
-        set { _isClear = value; }
-    }
-    [Header("Playerのゲームオーバー判定")]
-    [SerializeField] private bool _isGameOver = false;
-    public bool GameOver
-    {
-        get { return _isGameOver; }
-        set { _isGameOver = value; }
-    }
+
+    //[Header("Playerが獲得したscore")]
+    //[SerializeField] private int _score = 0;
+    static public int GetScore{ get; set; }
+    
+    //[Header("Playerのクリア判定")]
+    //[SerializeField] private bool _isClear = false;
+    static public bool GetClear { get; set; }
+
+    //[Header("Playerのゲームオーバー判定")]
+    //[SerializeField] private bool _isGameOver = false;
+    static public bool GameOver { get; set; }
 
     private void Awake()
     {
@@ -50,28 +41,29 @@ public class GameManager : MonoBehaviour
     {
         if (_textPanel != null)
         {
-            _textPanel.text = _score.ToString();
+            _textPanel.text = GetScore.ToString();
         }
 
-        if (_isClear)
+        if (GetClear)
         {
             //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
             //{
             //    _score = 0;
             //}
 
-            _isClear = false;
+            GetClear = false;
         }
 
 
-        if(_isGameOver)
+        if(GameOver)
         {
+            Debug.Log("げーむおーばーー");
             //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
             //{
             //    _score = 0;
             //}
 
-            _isGameOver = false;
+            GameOver = false;
         }
     }
 
