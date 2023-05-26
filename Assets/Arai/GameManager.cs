@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//namespace Common;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,14 +55,23 @@ public class GameManager : MonoBehaviour
 
         if (_isClear)
         {
+            //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
+            //{
+            //    _score = 0;
+            //}
+
             _isClear = false;
-            SceneChnager("Clear");
         }
+
 
         if(_isGameOver)
         {
+            //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
+            //{
+            //    _score = 0;
+            //}
+
             _isGameOver = false;
-            SceneChnager("GameOver");
         }
     }
 
