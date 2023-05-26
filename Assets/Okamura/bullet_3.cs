@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet_1 : MonoBehaviour
+public class bullet_3 : MonoBehaviour
 {
     Transform _tr;
     Rigidbody2D _rb;
-    [SerializeField] GameObject Chased_object;
+    [SerializeField] GameObject Player;
     public int Bulletspeed1_;
     float ChasedTime;
     [SerializeField] int ChasedTimeLimid;
+    [SerializeField] float Decreased;
     [SerializeField] int ResetTime;
     // Start is called  the first frame update
     void Start()
@@ -26,13 +27,18 @@ public class bullet_1 : MonoBehaviour
         ChasedTime += Time.deltaTime;
         if(ChasedTime <= ChasedTimeLimid)
         {
-            Vector3 vector3 = Chased_object.transform.position - _tr.position;
+            Vector3 vector3 = Player.transform.position - _tr.position;
             _rb.AddForce(vector3.normalized * Bulletspeed1_);
         }
-        //else if(ChasedTime > ResetTime)
-        //{
-        //    ChasedTime = 0;
-        //}
+        else if(ChasedTime > ResetTime)
+        {
+            ChasedTime = 0;
+        }
+        else
+        {
+            Vector3 vector3_1 = Player.transform.position - _tr.position;
+            _rb.velocity = vector3_1 *  Decreased;
+        }
 
     }
 }
