@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
 
     Transform bullet;
 
+    private int timeOut;
+
     float time;
 
     public int bulletSpeed;
@@ -28,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
         
         time += Time.deltaTime;
-        if (time < 3)
+        if (time < 5)
         {
             Vector3 vector3 = Player.transform.position - bullet.position;
             _rd.AddForce(vector3.normalized * bulletSpeed);
