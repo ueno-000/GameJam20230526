@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class EnemyBoss : MonoBehaviour
+public class EnemyBoss : MonoBehaviour,IDamage
 {
     // Start is called before the first frame update
     Rigidbody2D _rd;
@@ -17,13 +17,17 @@ public class EnemyBoss : MonoBehaviour
 
     public int timeOut;
 
-    public int _hp;
+    public float HP;
+
+    public float MaxHP;
 
     public int _move;
 
     bool b = false;
 
     [SerializeField] GameObject _bullet;
+
+    [SerializeField] Slider HPbar;
 
     void Start()
     {
@@ -48,10 +52,17 @@ public class EnemyBoss : MonoBehaviour
         }
         else
         {
-            A();
+                   Attack();
             Debug.Log(_move);
         }
+        if(HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
+
+   
+
     private IEnumerator Randam2()
     {
         while (true)
@@ -62,7 +73,7 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
-    void A()
+    void Attack()
     {
         
         if (b == true) 
@@ -73,5 +84,9 @@ public class EnemyBoss : MonoBehaviour
         
     }
 
-    
+    void IDamage.Damage(float damage)
+    {
+        HP -= damage;
+        HPbar.value = HP / MaxHP;
+    }
 }

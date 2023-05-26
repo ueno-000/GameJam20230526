@@ -15,9 +15,11 @@ public class Bullet : MonoBehaviour
 
     private int timeOut;
 
-    float time;
+    public float time;
 
     public int bulletSpeed;
+
+    public float damage;
 
     void Start()
     {
@@ -30,10 +32,21 @@ public class Bullet : MonoBehaviour
     {
         
         time += Time.deltaTime;
-        if (time < 5)
+        if (time < 3)
         {
             Vector3 vector3 = Player.transform.position - bullet.position;
             _rd.AddForce(vector3.normalized * bulletSpeed);
+            _rd.AddForce(vector3 * bulletSpeed);  
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "Player")
+        {
+            IDamage dd = collision.gameObject.GetComponent<IDamage>();
+            dd.Damage(damage);
         }
     }
 }
