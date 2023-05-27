@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-//namespace Common;
-
+using Common;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -46,10 +45,10 @@ public class GameManager : MonoBehaviour
 
         if (GetClear)
         {
-            //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
-            //{
-            //    _score = 0;
-            //}
+            if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
+            {
+                SceneChnager(Define.SCENENAME_CLEAR_RESULT);
+            }
 
             GetClear = false;
         }
@@ -58,10 +57,10 @@ public class GameManager : MonoBehaviour
         if(GameOver)
         {
             Debug.Log("げーむおーばーー");
-            //if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
-            //{
-            //    _score = 0;
-            //}
+            if (SceneManager.GetActiveScene().name == Define.SCENENAME_MASTERGAME)
+            {
+                SceneChnager(Define.SCENENAME_GAMEOVER_RESULT);
+            }
 
             GameOver = false;
         }

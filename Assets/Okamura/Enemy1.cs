@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour, IDamage
+public class Enemy1 : MonoBehaviour
 {
     public float Hp;
     Rigidbody2D _rb2;
@@ -35,8 +35,11 @@ public class Enemy1 : MonoBehaviour, IDamage
         }
     }
 
-    public void Damage(float damage)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Hp -= damage;
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

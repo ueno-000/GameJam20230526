@@ -35,10 +35,12 @@ public class bullet_3 : MonoBehaviour
             ChasedTime = 0;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject == Player) 
+        if (collision.gameObject.name == "Player")
         {
+            Debug.Log("aaaa");
             IDamage damage3 = collision.gameObject.GetComponent<IDamage>();
             damage3.Damage(_damage3);
         }

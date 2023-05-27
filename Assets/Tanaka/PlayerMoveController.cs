@@ -7,25 +7,28 @@ public class PlayerMoveController : MonoBehaviour
     /// <summary>
     /// ÉvÉåÉCÉÑÅ[ÇÃë¨Ç≥
     /// </summary>
-    [SerializeField] private float _speed;
-
+    private float _speed;
 
     private Rigidbody2D _rb;
     private float _h;
 
-    
-
+    [SerializeField] private PlayerValueController _valueController;
    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _valueController= GetComponent<PlayerValueController>();
+        _speed = 20;
     }
 
-   
     void Update()
     {
         _h = Input.GetAxis("Horizontal");
 
-      
+        if (_valueController.IsSpeedUP)
+        {
+            _speed += _valueController.PlayerSpeed;
+            _valueController.IsSpeedUP = false;
+        }
 
     }
 
