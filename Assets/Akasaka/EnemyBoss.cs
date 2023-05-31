@@ -10,88 +10,111 @@ using Random = UnityEngine.Random;
 
 public class EnemyBoss : MonoBehaviour,IDamage
 {
-    // Start is called before the first frame update
-    Rigidbody2D _rd;
+    [Header("アタッチするもの")]
+    /// <summary>
+    /// Bossが生成するBullet
+    /// </summary>
+    [SerializeField] GameObject _bulletPrefab;
+    [Tooltip("HPSliderをアタッチする"), SerializeField] Slider _bossHpSlider;
+    [Tooltip("ゴリラがダメージを受けたSEをアタッチする"),SerializeField] private AudioClip _damageSE;
 
-    public int _speed;
+    [Header("各種設定値")]
+    [Tooltip("Enemyの移動速度"),Range(1,10),SerializeField] private float _speed;
+    [Tooltip("攻撃のインターバル"), Range(1, 10), SerializeField] private float _attackInterval = 3f;
+    [Range(1, 500), SerializeField] private float _maxHP = 250;
+    [Tooltip("Enemyの横移動可能範囲のX軸絶対値"), Range(5, 20), SerializeField] private float _moveEnabledPosX = 10;
 
-    public int timeOut;
+    private Animator _anim;
+    private AudioSource _audio;
 
-    public float HP;
+    /// <summary>Enemyの行動を決める値</summary>
+    private int _actionNum;
+    /// <summary>Enemyの体力</summary>
+    private float _currentHp;
+    /// <summary>攻撃が出来るかの判定</summary>
+    private bool _isAttack = false;
 
-    public float MaxHP;
-
-    public int _move;
-
-    bool b = false;
-
-    [SerializeField] GameObject _bullet;
-
-    //[SerializeField] Slider HPbar;
-
-    void Start()
+    private void Start()
     {
-        _rd = GetComponent<Rigidbody2D>();
-        StartCoroutine(Randam2());
+        _anim = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
 
-        
+        /*HP関連の初期化
+        Enemy頭上のHPバーと実際の保持しているHPの値、最大HPが
+        バラバラにならないようにしている
+         */
+        _bossHpSlider = _bossHpSlider.gameObject.GetComponent<Slider>();
+        _bossHpSlider.maxValue = _maxHP;
+        _bossHpSlider.value = _maxHP;
+        _currentHp = _maxHP;
+
+
+        StartCoroutine(BossAction());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (_move == 1)
-        //{
-        //    transform.position -= new Vector3(Time.deltaTime * _speed, 0);
-        //    b = true;
-        //}
-        //else if (_move == 0) 
-        //{
-        //    transform.position += new Vector3(Time.deltaTime * _speed, 0);
-        //    b = true;
-        //}
-        //else
-        //{
-        //           Attack();
-        //    Debug.Log(_move);
-        //}
+        Debug.Log($"ボスHP：{_currentHp}");
 
-        if(HP <= 0)
+        if (_actionNum == 1)//左移動
         {
+            if (transform.position.x > -_moveEnabledPosX)//移動可能範囲内で動く
+            {
+                transform.position -= new Vector3(Time.deltaTime * _speed, 0);
+                _isAttack = true;
+            }
+        }
+        else if (_actionNum == 0)//右移動
+        {
+            if (transform.position.x < _moveEnabledPosX)
+            {
+                transform.position += new Vector3(Time.deltaTime * _speed, 0);
+                _isAttack = true;
+            }
+        }
+        else
+        {
+            Attack();
+            Debug.Log(_actionNum);
+        }
 
+        if (_currentHp <= 0)
+        {
             GameManager.GetClear = true;
             Destroy(this.gameObject);
-
         }
     }
 
-   
 
-    private IEnumerator Randam2()
+    private IEnumerator BossAction()
     {
         while (true)
         {
-            _move = Random.Range(0,3);
-            yield return new WaitForSeconds(timeOut);
-            GameObject game = Instantiate(_bullet, transform.position, transform.rotation);
+            _actionNum = Random.Range(0,3);
+            yield return new WaitForSeconds(_attackInterval);
+            Instantiate(_bulletPrefab, transform.position, transform.rotation);
         }
     }
 
-    void Attack()
+    private void Attack()
     {
         
-        if (b == true) 
+        if (_isAttack == true) 
         {
-            GameObject game = Instantiate(_bullet, transform.position, transform.rotation);
-            b = false;
+            Instantiate(_bulletPrefab, transform.position, transform.rotation);
+            _isAttack = false;
         }
         
     }
 
     void IDamage.Damage(float damage)
     {
-        Debug.Log("aaaaa");
-        HP -= damage;
-        //HPbar.value = HP / MaxHP;
+        _currentHp -= damage;
+        _bossHpSlider.value = _currentHp;
+        _anim.SetTrigger("DamageTrigger");
+        _audio.PlayOneShot(_damageSE);
+        //Debug.LogAssertion($"ボスHP：{_currentHp}");
     }
 }
