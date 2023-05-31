@@ -717,7 +717,7 @@ PrefabInstance:
     - target: {fileID: 6097214941144572739, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fb0961ca7732d9642bd0f1d3ad16be8a, type: 3}
+      objectReference: {fileID: 21300000, guid: 9a7938b482201a24dba4c266ad0b62e4, type: 3}
     - target: {fileID: 6097214941144572742, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Name
       value: StartButton
@@ -1324,7 +1324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Pivot.y
-      value: 1.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_RootOrder
@@ -1348,11 +1348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 255.6048
+      value: 230.7529
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 155.68
+      value: 188.263
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_LocalScale.x
@@ -1392,11 +1392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.49121
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 184.07733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1413,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 6097214941144572739, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e4cbf7be1e40b7d429d2bf26f86d27e7, type: 3}
+      objectReference: {fileID: 21300000, guid: 872d463cb7bbab04ab8fa1b519bd123b, type: 3}
     - target: {fileID: 6097214941144572742, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Name
       value: SetumeiButton
@@ -1953,7 +1953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 553bd726d365db6409366a62be685363, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8919f24bcab6be4990a1cc7c420f3d2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
