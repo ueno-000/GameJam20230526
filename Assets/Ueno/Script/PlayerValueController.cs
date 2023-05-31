@@ -8,9 +8,6 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerValueController : MonoBehaviour,IDamage,IItim
 {
-    /// <summary>ScoreText</summary>
-    [SerializeField] private Text _scoreText;
-
     /// <summary>スライダー</summary>
     [SerializeField] private Slider _heathSlider;
 
@@ -86,9 +83,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
         _heathSlider = _heathSlider.gameObject.GetComponent<Slider>();
         _heathSlider.maxValue = _maxHealth;
         _heathSlider.value = _maxHealth;
-
-        _scoreText = _scoreText.gameObject.GetComponent<Text>();
-
+        
         _anim = GetComponent<Animator>();
     }
     private void Update()
@@ -96,8 +91,6 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
         Score++;
         
         _heathSlider.value = _health;
-
-        _scoreText.text = Score.ToString();
 
         if (_health <= 0)
         {
@@ -136,7 +129,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Usu")
+        if (collision.gameObject.tag == "Usu")
         {
             _isInvincible = true;
         }
@@ -148,6 +141,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
         {
             Health -= damage;
         }
+        _anim.SetTrigger("DamageTrigger");
     }
 
     public void HP(float _AddHP)
