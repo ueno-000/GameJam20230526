@@ -8,9 +8,11 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerValueController : MonoBehaviour,IDamage,IItim
 {
+    [Header("アタッチするもの")]
     /// <summary>スライダー</summary>
-    [SerializeField] private Slider _heathSlider;
-
+    [Tooltip("hierarchy/UI/Header/HealthSliderをアタッチ"),SerializeField] private Slider _heathSlider;
+    [Tooltip("プレイヤーがダメージを受けた音"), SerializeField] private AudioClip _damageSE;
+    [Tooltip("プレイヤーの各種値に関わるSE用AudioSource。Playerの子オブジェクトをアタッチ"), SerializeField] private AudioSource _seAudio;
     /// <summary>無敵時間 </summary>
     [SerializeField] private float _invincibleTime = 5;
     /// <summary> 無敵モードフラグ</summary>
@@ -20,6 +22,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
     [SerializeField] private float _maxHealth = 1000;
 
     private Animator _anim;
+    
     private float time;
 
     /// <summary>スコア</summary>
@@ -85,6 +88,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
         _heathSlider.value = _maxHealth;
         
         _anim = GetComponent<Animator>();
+        _seAudio = _seAudio.gameObject.GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -142,6 +146,7 @@ public class PlayerValueController : MonoBehaviour,IDamage,IItim
             Health -= damage;
         }
         _anim.SetTrigger("DamageTrigger");
+        _seAudio.PlayOneShot(_damageSE);
     }
 
     public void HP(float _AddHP)
