@@ -243,7 +243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a298880886588824381d02c72a7fedbb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: adb09f664134cc547a6f009394c10a57, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1146,7 +1146,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b394288df6ada044bb50ac0cd13789e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cf6d0b70f43fcb4eb900a782e4bcfcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1213,11 +1213,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 87.1043
+      value: 267.6845
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 16.332
+      value: 218.3942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1249,11 +1257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 294
+      value: -618
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -151
       objectReference: {fileID: 0}
     - target: {fileID: 6097214941144572737, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1270,7 +1278,7 @@ PrefabInstance:
     - target: {fileID: 6097214941144572739, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ddbb52e3d4f89954492147a37a4057b0, type: 3}
+      objectReference: {fileID: 21300000, guid: e2f5f2b73bb6862418ac8b456cbcfe59, type: 3}
     - target: {fileID: 6097214941144572742, guid: f139a6c5ed2ec5448811938fbc00d916, type: 3}
       propertyPath: m_Name
       value: Button
