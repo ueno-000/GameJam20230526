@@ -224,13 +224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e485dbe82e037d4996d3e2af4b22589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 1268748701628738043, guid: 8508c3218a796f047b9e1d6e775e0854, type: 3}
-  HPbar: {fileID: 6686117233286740623}
-  _xRange: 10
-  _attackSE: {fileID: 8300000, guid: 7ad50e8d91341d54d95d863f11b01e6d, type: 3}
-  _speed: 1
-  timeOut: 5
-  MaxHP: 150
+  _bulletPrefab: {fileID: 1268748701628738043, guid: 8508c3218a796f047b9e1d6e775e0854, type: 3}
+  _bossHpSlider: {fileID: 6686117233286740623}
+  _damageSE: {fileID: 8300000, guid: 3cb307d58d2407247aa902c7c12125e2, type: 3}
+  _speed: 10
+  _attackInterval: 1.7
+  _maxHP: 250
+  _moveEnabledPosX: 11.8
 --- !u!61 &1995860646997234444
 BoxCollider2D:
   m_ObjectHideFlags: 0
